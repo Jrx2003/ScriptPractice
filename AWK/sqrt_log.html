@@ -1,0 +1,14 @@
+<!-- This HTML file is a front page for the sqrt_log.cgi script. -->
+<!DOCTYPE html>
+<body>
+	<h2>Enter a number and select an operation</h2>
+    <!-- The awk file must be in a valid cgi-bin directory that can execute scripts. -->
+	<form action="cgi-bin/sqrt_log.cgi" method="get">
+		<label for="number">Number:</label>
+		<input type="text" id="number" name="number" required>
+		<br><br>
+		<button type="submit" name="operation" value="log2">Log2</button>
+		<button type="submit" name="operation" value="log10">Log10</button>
+		<button type="submit" name="operation" value="sqrt">Sqrt</button>
+	</form>
+</body>

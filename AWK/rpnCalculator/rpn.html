@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>RPN Calculator</title>
+</head>
+<body>
+    <!-- This form has a single text box where the user enters the entire RPN expression.
+         Pressing the Enter button will submit the form to the CGI script (rpn.awk). -->
+    <h2>Enter an RPN expression (only '+' or '-' operator, e.g. 3 4 +):</h2>
+    <!-- The CGI script must be put in a valid cgi-bin directory that can execute scripts!!!!! -->
+    <form action="cgi-bin/rpn.cgi" method="get">
+        <label for="expression">Expression:</label>
+        <input type="text" id="expression" name="expression">
+        <button type="submit" name="submit" value="submit">Enter</button>
+    </form>
+<br>
+<a href="cgi-script/rpn.cgi">View the cgi script</a>
+</body>
+</html>

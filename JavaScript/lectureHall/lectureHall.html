@@ -1,0 +1,92 @@
+<img src="DeGrace.jpg" width="1200" onclick="checkshift(event);">
+
+<img id="s1" src="jrx.jpg" width="50" style="z-index:1; position:absolute; left:300px; top:710px; border:2px solid green;">
+<img id="s2" src="jrx2.jpg" width="50" style="z-index:1; position:absolute; left:400px; top:710px; border:2px solid green;">
+
+<script>
+let person = null;
+let widthArray = [75, 175, 300, 400, 500, 770, 870, 970, 1060, 1150];
+let heightArray = [710, 650, 600, 580];
+
+document.addEventListener("keydown", function(event) {
+  if (event.key === "1") { 
+    person = document.getElementById("s1");
+  } else if (event.key === "2") { 
+    person = document.getElementById("s2");
+  } else if (event.key === "ArrowUp") {
+    moveUp();
+  } else if (event.key === "ArrowDown") {
+    moveDown();
+  } else if (event.key === "ArrowLeft") {
+    moveLeft();
+  } else if (event.key === "ArrowRight") {
+    moveRight();
+  }
+});
+
+function checkshift(event) {
+  if (!person) {
+    alert("Press 1 for Peter, Press 2 for the Chicken");
+    return;
+  }
+
+  let currentLeft = parseInt(person.style.left.replace("px", ""), 10);
+  let currentIndex = widthArray.findIndex(val => val === currentLeft);
+
+  if (event.shiftKey) {
+    if (currentIndex > 0) {
+      person.style.left = widthArray[currentIndex - 1] + "px";
+    }
+  } else {
+    if (currentIndex < widthArray.length - 1) {
+      person.style.left = widthArray[currentIndex + 1] + "px";
+    }
+  }
+}
+
+function moveLeft() {
+  if (!person) return;
+
+  let currentLeft = parseInt(person.style.left.replace("px", ""), 10);
+  let currentIndex = widthArray.findIndex(val => val === currentLeft);
+
+  if (currentIndex > 0) {
+    person.style.left = widthArray[currentIndex - 1] + "px";
+  }
+}
+
+function moveRight() {
+  if (!person) return;
+
+  let currentLeft = parseInt(person.style.left.replace("px", ""), 10);
+  let currentIndex = widthArray.findIndex(val => val === currentLeft);
+
+  if (currentIndex < widthArray.length - 1) {
+    person.style.left = widthArray[currentIndex + 1] + "px";
+  }
+}
+
+function moveDown() {
+  if (!person) return;
+
+  let currentTop = parseInt(person.style.top.replace("px", ""), 10);
+  let currentIndex = heightArray.findIndex(val => val === currentTop);
+
+  if (currentIndex > 0) {
+    person.style.top = heightArray[currentIndex - 1] + "px";
+	person.width = person.width * 1.11111;
+  }
+}
+
+function moveUp() {
+  if (!person) return;
+
+  let currentTop = parseInt(person.style.top.replace("px", ""), 10);
+  let currentIndex = heightArray.findIndex(val => val === currentTop);
+
+  if (currentIndex < heightArray.length - 1) {
+    person.style.top = heightArray[currentIndex + 1] + "px";
+	person.width = person.width * 0.9;
+  }
+}
+</script>
